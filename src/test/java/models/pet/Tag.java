@@ -1,15 +1,4 @@
 package models.pet;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Tag {
-    private int id;
-    private String name;
+public record Tag(int id, String name) {
 }

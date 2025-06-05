@@ -1,15 +1,7 @@
 package models.pet;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Category {
-    private int id;
-    private String name;
-}
+public record Category(int id, String name) {}

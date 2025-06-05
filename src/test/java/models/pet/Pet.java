@@ -1,16 +1,15 @@
 package models.pet;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Builder
+@JsonDeserialize(builder = Pet.PetBuilder.class)
 public class Pet {
     private int id;
     private Category category;
@@ -18,4 +17,8 @@ public class Pet {
     private List<String> photoUrls;
     private List<Tag> tags;
     private Status status;
+
+    @JsonPOJOBuilder(withPrefix = "")  // <-- важно: Lombok по умолчанию использует name(), а не withName()
+    public static class PetBuilder {
+    }
 }

@@ -9,6 +9,6 @@ public class CommonChecks {
     @Step("Checking if received code equals to expected {expectedCode}")
     public static void checkResponseCode(int expectedCode, Response response) {
         Assertions.assertEquals(expectedCode, response.statusCode(),
-                String.format("Received code %d does not equal to expected $d", response.statusCode(), expectedCode));
+                String.format("Received code %d does not equal to expected %d", response.statusCode(), expectedCode));
     }
 }

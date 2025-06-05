@@ -18,6 +18,8 @@
         <restassured.version>5.5.0</restassured.version>
         <jackson.version>2.19.0</jackson.version>
         <lombok.version>1.18.36</lombok.version>
+        <slf4j.version>2.0.17</slf4j.version>
+        <logback.version>1.5.18</logback.version>
         <mavensurefireplugin.version>3.2.5</mavensurefireplugin.version>
         <aspectj.version>1.9.23</aspectj.version>
         <alluremavenplugin.version>2.15.2</alluremavenplugin.version>
@@ -88,6 +90,17 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

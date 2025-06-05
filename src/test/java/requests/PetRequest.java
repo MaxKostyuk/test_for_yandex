@@ -1,9 +1,11 @@
 package requests;
 
 import config.Config;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import models.pet.Pet;
 
 public class PetRequest extends BaseRequest {
@@ -13,11 +15,24 @@ public class PetRequest extends BaseRequest {
         PET_BASE = Config.get().getPetUrl();
     }
 
+
+    @Step("Sending add pet request with parameters {pet}")
     public static Response addNewPet(Pet pet) {
-        return RestAssured.given().
-                log().all()
+        return RestAssured.given()
                 .body(pet)
                 .contentType(ContentType.JSON)
                 .post(PET_BASE);
+    }
+
+    @Step("Sending delete pet request with pet id {petId} and api key {apiKey}")
+    public static Response deletePet(int petId, String apiKey) {
+        RequestSpecification request = RestAssured.given();
+        if (apiKey != null)
+            request = request.headers("api_key", apiKey);
+        return request.post(PET_BASE + petId);
+    }
+
+    public static Response deletePet(int petId) {
+        return deletePet(petId, null);
     }
 }

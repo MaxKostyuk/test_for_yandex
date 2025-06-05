@@ -18,7 +18,7 @@ public class Pet {
     private List<Tag> tags;
     private Status status;
 
-    @JsonPOJOBuilder(withPrefix = "")  // <-- важно: Lombok по умолчанию использует name(), а не withName()
+    @JsonPOJOBuilder(withPrefix = "")
     public static class PetBuilder {
     }
 }

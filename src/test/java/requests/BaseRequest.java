@@ -14,4 +14,8 @@ public class BaseRequest {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     }
 
+    public static <T> T fromJson(String jsonString, Class<T> classOfT) throws Exception {
+        return mapper.readValue(jsonString, classOfT);
+    }
+
 }

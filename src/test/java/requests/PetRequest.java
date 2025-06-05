@@ -29,7 +29,7 @@ public class PetRequest extends BaseRequest {
         RequestSpecification request = RestAssured.given();
         if (apiKey != null)
             request = request.headers("api_key", apiKey);
-        return request.post(PET_BASE + petId);
+        return request.delete(PET_BASE + petId);
     }
 
     public static Response deletePet(int petId) {

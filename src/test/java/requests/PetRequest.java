@@ -26,7 +26,7 @@ public class PetRequest extends BaseRequest {
 
     @Step("Sending delete pet request with pet id {petId} and api key {apiKey}")
     public static Response deletePet(int petId, String apiKey) {
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given().accept(ContentType.JSON);
         if (apiKey != null)
             request = request.headers("api_key", apiKey);
         return request.delete(PET_BASE + petId);
@@ -34,5 +34,10 @@ public class PetRequest extends BaseRequest {
 
     public static Response deletePet(int petId) {
         return deletePet(petId, null);
+    }
+
+    @Step("Sending get pet request with pet id {petId}")
+    public static Response getPetById(int petId) {
+        return RestAssured.given().get(PET_BASE + petId);
     }
 }

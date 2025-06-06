@@ -37,7 +37,15 @@ public class PetRequest extends BaseRequest {
     }
 
     @Step("Sending get pet request with pet id {petId}")
-    public static Response getPetById(int petId) {
+    public static Response getPetById(long petId) {
         return RestAssured.given().get(PET_BASE + petId);
+    }
+
+    @Step("Updating pet with body {pet}")
+    public static Response updatePet(Pet pet) {
+        return RestAssured.given()
+                .body(pet)
+                .contentType(ContentType.JSON)
+                .put(PET_BASE);
     }
 }

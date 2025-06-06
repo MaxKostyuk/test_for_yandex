@@ -20,6 +20,7 @@
         <lombok.version>1.18.36</lombok.version>
         <slf4j.version>2.0.17</slf4j.version>
         <logback.version>1.5.18</logback.version>
+        <datafaker.version>2.4.2</datafaker.version>
         <mavensurefireplugin.version>3.2.5</mavensurefireplugin.version>
         <aspectj.version>1.9.23</aspectj.version>
         <alluremavenplugin.version>2.15.2</alluremavenplugin.version>
@@ -101,6 +102,11 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>${datafaker.version}</version>
         </dependency>
     </dependencies>
 

@@ -2,13 +2,12 @@ package data.provider.pet;
 
 import models.pet.Pet;
 import models.pet.Status;
+import net.datafaker.Faker;
 
 import java.util.List;
 
 public class PetProvider {
-    private static final int VALID_PET_ID = 300;
-    private static final String VALID_PET_NAME = "TestPet";
-    private static final List<String> VALID_URL_LIST = List.of("https://images.app.goo.gl/Uiw5G8XpK2ZTnNmZ8");
+    private static final Faker faker = new Faker();
     private static final Status VALID_PET_STATUS = Status.AVAILABLE;
 
     public static Pet singleValidPetProvider() {
@@ -16,19 +15,17 @@ public class PetProvider {
     }
 
     public static Pet singleValidPetWithName(String name) {
-        Pet pet = generateValidPet();
-        pet.setName(name);
-        return pet;
-    }
-
-    private static Pet generateValidPet() {
         return Pet.builder()
-                .id(VALID_PET_ID)
+                .id(faker.random().nextInt(1000, 99999))
                 .category(CategoryProvider.singleValidCategoryProvider().findAny().get())
-                .name(VALID_PET_NAME)
-                .photoUrls(VALID_URL_LIST)
+                .name(name)
+                .photoUrls(List.of(faker.internet().url()))
                 .tags(TagProvider.singleValidTagProvider().toList())
                 .status(VALID_PET_STATUS)
                 .build();
+    }
+
+    private static Pet generateValidPet() {
+        return singleValidPetWithName(faker.animal().name());
     }
 }

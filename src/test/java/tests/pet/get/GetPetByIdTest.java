@@ -19,7 +19,7 @@ public class GetPetByIdTest extends BaseTestClass {
 
     @BeforeAll
     public static void setUp() {
-        pet = singleValidPetProvider().findAny().get();
+        pet = singleValidPetProvider();
     }
 
     @BeforeEach

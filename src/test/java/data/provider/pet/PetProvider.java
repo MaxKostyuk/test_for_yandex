@@ -4,7 +4,6 @@ import models.pet.Pet;
 import models.pet.Status;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class PetProvider {
     private static final int VALID_PET_ID = 300;
@@ -12,8 +11,14 @@ public class PetProvider {
     private static final List<String> VALID_URL_LIST = List.of("https://images.app.goo.gl/Uiw5G8XpK2ZTnNmZ8");
     private static final Status VALID_PET_STATUS = Status.AVAILABLE;
 
-    public static Stream<Pet> singleValidPetProvider() {
-        return Stream.of(generateValidPet());
+    public static Pet singleValidPetProvider() {
+        return generateValidPet();
+    }
+
+    public static Pet singleValidPetWithName(String name) {
+        Pet pet = generateValidPet();
+        pet.setName(name);
+        return pet;
     }
 
     private static Pet generateValidPet() {

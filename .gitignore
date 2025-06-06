@@ -19,8 +19,10 @@ logs/
 *.log
 
 # Allure
+.allure
 allure-report/
-allure-results/
+allure-results
+*/allure-results/
 
 # macOS
 .DS_Store
